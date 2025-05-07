@@ -108,3 +108,4 @@ $ go build -ldflags="-s -w" -o ./bin/main . # ./bin/main to run the application 
 ---
 
 ### Happy coding 😀!!
+# go-echo-templ-htmx-main-cicd
