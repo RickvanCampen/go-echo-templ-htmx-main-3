@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/emarifer/go-echo-templ-htmx/db"
-	"github.com/emarifer/go-echo-templ-htmx/handlers"
-	"github.com/emarifer/go-echo-templ-htmx/services"
+	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/db"        // Aangepast naar jouw repository
+	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/handlers"  // Aangepast naar jouw repository
+	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/services"  // Aangepast naar jouw repository
 
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
@@ -50,10 +50,3 @@ func main() {
 	// Start Server
 	e.Logger.Fatal(e.Start(":8082"))
 }
-
-/*
-https://gist.github.com/taforyou/544c60ffd072c9573971cf447c9fea44
-https://gist.github.com/mhewedy/4e45e04186ed9d4e3c8c86e6acff0b17
-
-https://github.com/CurtisVermeeren/gorilla-sessions-tutorial
-*/
