@@ -30,7 +30,6 @@ WORKDIR /root/
 COPY --from=builder /app/main .
 
 # Stap 11: Kopieer alle andere benodigde bestanden zoals templates en assets
-COPY ./templates ./templates
 COPY ./assets ./assets
 
 # Stap 12: Expose de poort die de app gebruikt
