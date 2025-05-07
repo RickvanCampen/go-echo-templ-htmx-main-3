@@ -3,7 +3,7 @@ package main
 import (
 	"go-echo-templ/db"        
 	"go-echo-templ/handlers"  
-	"ggo-echo-templ/services"  
+	"go-echo-templ/services"  
 
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
