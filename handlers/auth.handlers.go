@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"GO-echo-templ-htmx-main 3/services"
-	"GO-echo-templ-htmx-main 3/views/auth_views"
+	"go-echo-templ-htmx-main 3/services"
+	"go-echo-templ-htmx-main 3/views/auth_views"
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/a-h/templ"
