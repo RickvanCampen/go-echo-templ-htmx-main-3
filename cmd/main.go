@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/db"        // Aangepast naar jouw repository
-	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/handlers"  // Aangepast naar jouw repository
-	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/services"  // Aangepast naar jouw repository
+	"go-echo-templ-htmx-main-3/db"        
+	"go-echo-templ-htmx-main-3/handlers"  
+	"go-echo-templ-htmx-main-3/services"  
 
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"

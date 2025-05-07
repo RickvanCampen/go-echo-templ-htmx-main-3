@@ -1,4 +1,4 @@
-module github.com/emarifer/go-echo-templ-htmx
+module go-echo-templ-htmx-3
 
 go 1.21
 
