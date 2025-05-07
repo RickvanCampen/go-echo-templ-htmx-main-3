@@ -1,13 +1,9 @@
 package main
 
 import (
-	"go-echo-templ/db"        
-	"go-echo-templ/handlers"  
-	"go-echo-templ/services" 
-	"go-echo-templ/todo_views"
-    "go-echo-templ/views/auth_views"
-    "go-echo-templ/views/errors_pages"
- 
+	"GO-echo-templ-htmx-main 3/db"        
+	"GO-echo-templ-htmx-main 3/handlers"  
+	"GO-echo-templ-htmx-main 3/services" 
 
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"

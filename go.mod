@@ -1,4 +1,4 @@
-module go-echo-templ
+module GO-echo-templ-htmx-main 3
 
 go 1.21
 
