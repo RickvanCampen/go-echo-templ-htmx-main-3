@@ -1,5 +1,5 @@
 # Stap 1: Kies een lichte base image
-FROM golang:1.20-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 # Stap 2: Installeer benodigde dependencies voor Go build
 RUN apk add --no-cache git
