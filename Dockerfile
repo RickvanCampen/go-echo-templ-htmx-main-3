@@ -14,7 +14,10 @@ COPY go.mod go.sum ./
 RUN go mod tidy
 
 # Stap 6: Kopieer de hele projectmap naar de container
-COPY . .
+COPY cmd/ ./cmd/
+COPY db/ ./db/
+COPY handlers/ ./handlers/
+COPY services/ ./services/
 
 # Stap 7: Bouw de Go applicatie
 RUN go build -o main .
