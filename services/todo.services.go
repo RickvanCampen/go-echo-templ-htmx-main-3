@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"go-echo-templ-htmx-main-3/db"
+	"github.com/RickvanCampen/go-echo-templ-htmx-main-3/db"
 )
 
 func NewTodoServices(t Todo, tStore db.Store) *TodoServices {
