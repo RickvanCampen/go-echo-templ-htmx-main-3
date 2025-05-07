@@ -11,8 +11,7 @@ WORKDIR /go/src/app
 COPY go.mod go.sum ./
 
 # Stap 5: Haal de Go dependencies op
-RUN go mod tidy
-RUN go mod download
+RUN go mod tidy && go mod download
 
 # Stap 6: Kopieer de hele projectmap naar de container
 COPY . .
