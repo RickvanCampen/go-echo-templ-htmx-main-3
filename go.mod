@@ -1,4 +1,5 @@
-module github.com/RickvanCampen/go-echo-templ-htmx-main-3
+module github.com/emarifer/go-echo-templ-htmx
+
 go 1.21
 
 require (
