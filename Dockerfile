@@ -1,39 +1,35 @@
-# Stap 1: Kies een lichte base image
+# Stap 1: Gebruik een Go-alpine image voor de builder
 FROM golang:1.21-alpine AS builder
 
-# Stap 2: Installeer benodigde dependencies voor Go build
-RUN apk add --no-cache git
+# Stap 2: Installeer benodigde dependencies
+RUN apk add --no-cache git sqlite
 
-# Stap 3: Maak de werkdirectory
-WORKDIR /app
+# Stap 3: Stel de werkdirectory in voor de buildfase
+WORKDIR /go/src/app
 
-# Stap 4: Kopieer de Go module en dependencies
+# Stap 4: Kopieer go.mod en go.sum naar de container
 COPY go.mod go.sum ./
+
+# Stap 5: Haal de Go dependencies op
 RUN go mod tidy
 
-# Stap 5: Kopieer de volledige applicatiecode naar de container
+# Stap 6: Kopieer de hele projectmap naar de container
 COPY . .
 
-# Stap 6: Bouw de Go applicatie
+# Stap 7: Bouw de Go applicatie
 RUN go build -o main .
 
-# Stap 7: Maak een nieuwe, schone image voor de runtime
-FROM alpine:latest  
+# Stap 8: Maak een kleinere runtime image
+FROM alpine:latest
 
-# Stap 8: Installeer benodigde libraries voor SQLite (indien nodig)
+# Stap 9: Installeer benodigde runtime dependencies
 RUN apk add --no-cache sqlite
 
-# Stap 9: Maak de werkdirectory
+# Stap 10: Stel de werkdirectory in voor de runtime
 WORKDIR /root/
 
-# Stap 10: Kopieer de gebouwde Go-binaire van de builder image
-COPY --from=builder /app/main .
+# Stap 11: Kopieer de gebouwde binary van de builder naar de runtime image
+COPY --from=builder /go/src/app/main /root/
 
-# Stap 11: Kopieer alle andere benodigde bestanden zoals templates en assets
-COPY ./assets ./assets
-
-# Stap 12: Expose de poort die de app gebruikt
-EXPOSE 8080
-
-# Stap 13: Start de applicatie
+# Stap 12: Stel de entrypoint in voor de applicatie
 CMD ["./main"]
