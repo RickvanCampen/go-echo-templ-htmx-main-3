@@ -1,4 +1,4 @@
-module github.com/RickvanCampen/go-echo-templ-htmx-main-3
+module go-echo-templ
 
 go 1.21
 
