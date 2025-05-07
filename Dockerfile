@@ -15,10 +15,7 @@ RUN go mod tidy
 RUN go mod download
 
 # Stap 6: Kopieer de hele projectmap naar de container
-COPY cmd/ ./cmd/
-COPY db/ ./db/
-COPY handlers/ ./handlers/
-COPY services/ ./services/
+COPY . .
 
 # Stap 7: Stel de werkmap in voor de build van de main.go
 WORKDIR /go/src/app/cmd
