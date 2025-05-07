@@ -19,20 +19,23 @@ COPY db/ ./db/
 COPY handlers/ ./handlers/
 COPY services/ ./services/
 
-# Stap 7: Bouw de Go applicatie
+# Stap 7: Stel de werkmap in voor de build van de main.go
+WORKDIR /go/src/app/cmd
+
+# Stap 8: Bouw de Go applicatie
 RUN go build -o main .
 
-# Stap 8: Maak een kleinere runtime image
+# Stap 9: Maak een kleinere runtime image
 FROM alpine:latest
 
-# Stap 9: Installeer benodigde runtime dependencies
+# Stap 10: Installeer benodigde runtime dependencies
 RUN apk add --no-cache sqlite
 
-# Stap 10: Stel de werkdirectory in voor de runtime
+# Stap 11: Stel de werkdirectory in voor de runtime
 WORKDIR /root/
 
-# Stap 11: Kopieer de gebouwde binary van de builder naar de runtime image
-COPY --from=builder /go/src/app/main /root/
+# Stap 12: Kopieer de gebouwde binary van de builder naar de runtime image
+COPY --from=builder /go/src/app/cmd/main /root/
 
-# Stap 12: Stel de entrypoint in voor de applicatie
+# Stap 13: Stel de entrypoint in voor de applicatie
 CMD ["./main"]
