@@ -30,6 +30,7 @@ jobs:
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
       with:
+        registry: ghcr.io  # Log in bij GitHub Container Registry
         username: ${{ github.actor }}  # GitHub username
         password: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token om in te loggen bij GHCR
 
@@ -40,4 +41,3 @@ jobs:
     - name: Push Docker image
       run: |
         docker push ghcr.io/${{ github.repository }}:${{ github.sha }}  # Push de image naar GitHub Container Registry
-
