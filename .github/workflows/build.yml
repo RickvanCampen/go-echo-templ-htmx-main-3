@@ -3,10 +3,10 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main  # Zorg ervoor dat de workflow wordt uitgevoerd bij push naar de main branch
+      - main  
   pull_request:
     branches:
-      - main  # De workflow kan ook draaien bij pull requests naar main
+      - main  
 
 jobs:
   build:
@@ -32,12 +32,16 @@ jobs:
       with:
         registry: ghcr.io  # Log in bij GitHub Container Registry
         username: ${{ github.actor }}  # GitHub username
-        password: ${{ secrets.GITHUB_TOKEN }}  # GitHub Token om in te loggen bij GHCR
+        password: ${{ secrets.GITHUB_TOKEn }}  # GitHub Token om in te loggen bij GHCR
+
+    - name: Convert repository name to lowercase
+      id: lowercase
+      run: echo "::set-output name=reponame::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')"
 
     - name: Build Docker image
       run: |
-        docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/${{ github.repository }}:${{ github.sha }} -f Dockerfile .  # Bouwt de Docker image voor multiple platforms
+        docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/${{ steps.lowercase.outputs.reponame }}:${{ github.sha }} -f Dockerfile .  # Bouwt de Docker image voor multiple platforms
 
     - name: Push Docker image
       run: |
-        docker push ghcr.io/${{ github.repository }}:${{ github.sha }}  # Push de image naar GitHub Container Registry
+        docker push ghcr.io/${{ steps.lowercase.outputs.reponame }}:${{ github.sha }}  # Push de image naar GitHub Container Registry
